@@ -1,4 +1,3 @@
-/* ======== BASE ======== */
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
@@ -8,12 +7,160 @@ body {
   align-items: center;
   color: var(--texto);
   background: var(--fundo);
-  overflow: hidden; /* importante para o glitter */
   transition: background 1s ease, color 0.5s ease;
 }
 
 /* ====== TEMAS ====== */
 body.modo-escuro {
-  --fundo: radial-gradient(circle at top left, #021021, #0a1a2b, #08111f);
-  --caixa: rgba(255, 255, 255, 0.08);
-  --borda: rgba(0, 255, 255, 0
+  --fundo: radial-gradient(circle at top left, #060b23, #0f2027, #1b2735);
+  --caixa: rgba(255, 255, 255, 0.06);
+  --borda: rgba(0, 255, 255, 0.18);
+  --botao: #00ffff;
+  --botao-hover: #00bfff;
+  --texto: #ffffff;
+  --detalhe: #00ffff;
+}
+
+body.modo-claro {
+  --fundo: radial-gradient(circle at top right, #e3f2fd, #ffffff, #bbdefb);
+  --caixa: rgba(255, 255, 255, 0.9);
+  --borda: rgba(0, 136, 255, 0.18);
+  --botao: #0077ff;
+  --botao-hover: #00bfff;
+  --texto: #000000;
+  --detalhe: #0077ff;
+}
+
+/* ====== CONTAINER ====== */
+.caixa-principal {
+  background: var(--caixa);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 36px;
+  width: 92%;
+  max-width: 700px;
+  text-align: center;
+  border: 2px solid var(--detalhe);
+  box-shadow: 0 0 25px var(--detalhe);
+  animation: brilhoPulse 3s infinite alternate ease-in-out;
+}
+
+@keyframes brilhoPulse {
+  0% { box-shadow: 0 0 10px var(--detalhe); }
+  100% { box-shadow: 0 0 30px var(--detalhe), 0 0 60px var(--detalhe); }
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--detalhe);
+  margin-bottom: 18px;
+  text-shadow: 0 0 10px var(--detalhe), 0 0 20px var(--detalhe);
+}
+
+/* ====== INTRODUÇÃO ====== */
+.caixa-introducao {
+  animation: fadeIn 0.8s ease;
+}
+
+.texto-intro {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.botao-comecar {
+  background: var(--botao);
+  color: #000;
+  border: none;
+  font-size: 1.1rem;
+  padding: 14px 30px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px var(--detalhe);
+}
+
+.botao-comecar:hover {
+  background: var(--botao-hover);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ====== QUESTIONÁRIO ====== */
+.caixa-progresso {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.texto-progresso {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  color: var(--texto);
+}
+
+.barra-progresso {
+  background: rgba(255,255,255,0.1);
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progresso {
+  background: linear-gradient(90deg, var(--botao), var(--botao-hover), #ff00ff);
+  width: 0%;
+  height: 100%;
+  transition: width 0.4s ease;
+  animation: brilhoPulse 3s infinite alternate;
+}
+
+.botao-alternativa {
+  background-color: var(--botao);
+  border: none;
+  color: #000;
+  font-size: 1rem;
+  padding: 12px 24px;
+  border-radius: 25px;
+  margin: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px var(--detalhe);
+}
+
+.botao-alternativa:hover {
+  background-color: var(--botao-hover);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 0 25px var(--detalhe);
+}
+
+/* ====== RESULTADO ====== */
+.caixa-resultado {
+  display: none;
+  margin-top: 20px;
+}
+
+.texto-resultado {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.botao-reiniciar {
+  background-color: transparent;
+  border: 2px solid var(--botao);
+  color: var(--botao);
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.botao-reiniciar:hover {
+  background-color: var(--botao);
+  color: #fff;
+}
+
+/* ====== ANIMAÇÕES ====== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
