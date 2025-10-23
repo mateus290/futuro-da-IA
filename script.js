@@ -3,6 +3,8 @@ const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 const botaoReiniciar = document.querySelector(".botao-reiniciar");
+const textoProgresso = document.querySelector(".texto-progresso");
+const barraProgresso = document.querySelector(".progresso");
 
 const perguntas = [
   {
@@ -22,18 +24,40 @@ const perguntas = [
 let atual = 0;
 let respostas = [];
 
+function atualizaProgresso() {
+  const total = perguntas.length;
+  textoProgresso.textContent = `Pergunta ${atual + 1} de ${total}`;
+  const porcentagem = ((atual) / total) * 100;
+  barraProgresso.style.width = `${porcentagem}%`;
+}
+
 function mostraPergunta() {
   caixaResultado.style.display = "none";
-  caixaPerguntas.textContent = perguntas[atual].enunciado;
-  caixaAlternativas.innerHTML = "";
 
-  for (const alternativa of perguntas[atual].alternativas) {
-    const botao = document.createElement("button");
-    botao.textContent = alternativa;
-    botao.classList.add("botao-alternativa");
-    botao.addEventListener("click", () => respostaSelecionada(alternativa));
-    caixaAlternativas.appendChild(botao);
-  }
+  // Transição suave (fade)
+  caixaPerguntas.classList.add("fade-out");
+  caixaAlternativas.classList.add("fade-out");
+
+  setTimeout(() => {
+    const pergunta = perguntas[atual];
+    caixaPerguntas.textContent = pergunta.enunciado;
+    caixaAlternativas.innerHTML = "";
+
+    for (const alternativa of pergunta.alternativas) {
+      const botao = document.createElement("button");
+      botao.textContent = alternativa;
+      botao.classList.add("botao-alternativa");
+      botao.addEventListener("click", () => respostaSelecionada(alternativa));
+      caixaAlternativas.appendChild(botao);
+    }
+
+    atualizaProgresso();
+
+    caixaPerguntas.classList.remove("fade-out");
+    caixaAlternativas.classList.remove("fade-out");
+    caixaPerguntas.classList.add("fade-in");
+    caixaAlternativas.classList.add("fade-in");
+  }, 300);
 }
 
 function respostaSelecionada(resposta) {
@@ -54,11 +78,14 @@ function mostraResultado() {
   Obrigado por compartilhar sua visão sobre o futuro da IA! 🤖`;
 
   caixaResultado.style.display = "block";
+  barraProgresso.style.width = "100%";
+  textoProgresso.textContent = "Concluído 🎉";
 }
 
 botaoReiniciar.addEventListener("click", () => {
   atual = 0;
   respostas = [];
+  barraProgresso.style.width = "0%";
   mostraPergunta();
 });
 

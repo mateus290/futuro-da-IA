@@ -1,4 +1,4 @@
-/* Estilo base */
+/* ====== ESTILO BASE ====== */
 body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   font-family: "Poppins", sans-serif;
@@ -10,7 +10,7 @@ body {
   align-items: center;
 }
 
-/* Caixa principal */
+/* ====== CONTAINER ====== */
 .caixa-principal {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
@@ -40,7 +40,34 @@ h1 {
   color: #00ffe7;
 }
 
-/* Botões de alternativas */
+/* ====== PROGRESSO ====== */
+.caixa-progresso {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.texto-progresso {
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 8px;
+  color: #b9e8ff;
+}
+
+.barra-progresso {
+  background: rgba(255, 255, 255, 0.2);
+  height: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progresso {
+  background: linear-gradient(90deg, #00ffe7, #0099ff);
+  width: 0%;
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+/* ====== BOTÕES ====== */
 .botao-alternativa {
   background-color: #00ffe7;
   border: none;
@@ -59,7 +86,7 @@ h1 {
   transform: scale(1.05);
 }
 
-/* Resultado */
+/* ====== RESULTADO ====== */
 .caixa-resultado {
   display: none;
   margin-top: 20px;
@@ -70,7 +97,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* Botão reiniciar */
+/* ====== BOTÃO REINICIAR ====== */
 .botao-reiniciar {
   background-color: transparent;
   border: 2px solid #00ffe7;
@@ -85,3 +112,11 @@ h1 {
   background-color: #00ffe7;
   color: #000;
 }
+
+/* ====== TRANSIÇÕES ====== */
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s e
