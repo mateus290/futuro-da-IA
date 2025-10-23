@@ -117,3 +117,16 @@ Obrigado por compartilhar sua visão sobre o futuro da IA! 🤖✨`;
   aplicaTemaAutomatico();
   setInterval(aplicaTemaAutomatico, 60 * 60 * 1000);
 });
+// ===== GLITTER ANIMADO =====
+const NUM_PARTICULAS = 60;
+
+for (let i = 0; i < NUM_PARTICULAS; i++) {
+  const glitter = document.createElement("div");
+  glitter.classList.add("glitter");
+  glitter.style.left = Math.random() * 100 + "vw";
+  glitter.style.animationDuration = 3 + Math.random() * 5 + "s";
+  glitter.style.animationDelay = Math.random() * 5 + "s";
+  glitter.style.width = glitter.style.height = 2 + Math.random() * 4 + "px";
+  document.body.appendChild(glitter);
+}
+
