@@ -8,25 +8,39 @@
 </head>
 <body>
   <div class="caixa-principal">
-    <h1>Você Decide o Futuro da IA</h1>
 
-    <div class="caixa-progresso">
-      <span class="texto-progresso">Pergunta 1 de 6</span>
-      <div class="barra-progresso">
-        <div class="progresso"></div>
-      </div>
+    <!-- INTRODUÇÃO -->
+    <div class="caixa-introducao">
+      <h1>Você Decide o Futuro da IA</h1>
+      <p class="texto-intro">
+        Bem-vindo(a)! 🌍<br>
+        Este é um questionário interativo sobre o futuro da inteligência artificial.<br><br>
+        Compartilhe sua visão e descubra o que outras pessoas pensam sobre o destino da IA.
+      </p>
+      <button class="botao-comecar">Começar o Questionário 🚀</button>
     </div>
 
-    <div class="caixa-perguntas"></div>
-    <div class="caixa-alternativas"></div>
+    <!-- QUESTIONÁRIO -->
+    <div class="caixa-questionario" style="display:none;">
+      <h1>Você Decide o Futuro da IA</h1>
 
-    <div class="caixa-resultado">
-      <p class="texto-resultado"></p>
-      <button class="botao-reiniciar">Recomeçar</button>
+      <div class="caixa-progresso">
+        <span class="texto-progresso">Pergunta 1 de 6</span>
+        <div class="barra-progresso">
+          <div class="progresso"></div>
+        </div>
+      </div>
+
+      <div class="caixa-perguntas"></div>
+      <div class="caixa-alternativas"></div>
+
+      <div class="caixa-resultado">
+        <p class="texto-resultado"></p>
+        <button class="botao-reiniciar">Recomeçar</button>
+      </div>
     </div>
   </div>
 
-  <!-- script carregado no fim do body (ok) -->
   <script src="script.js"></script>
 </body>
 </html>
