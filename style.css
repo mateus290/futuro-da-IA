@@ -9,158 +9,35 @@ body {
   color: var(--texto);
   background: var(--fundo);
   transition: background 1s ease, color 0.5s ease;
+  overflow: hidden;
 }
 
 /* ====== TEMAS ====== */
 body.modo-escuro {
-  --fundo: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --fundo: radial-gradient(circle at top left, #060b23, #0f2027, #1b2735);
   --caixa: rgba(255, 255, 255, 0.1);
-  --borda: rgba(255, 255, 255, 0.2);
-  --botao: #00ffe7;
+  --borda: rgba(0, 255, 255, 0.3);
+  --botao: #00ffff;
   --botao-hover: #0099ff;
   --texto: #ffffff;
-  --detalhe: #00ffe7;
+  --detalhe: #00ffff;
 }
 
 body.modo-claro {
-  --fundo: linear-gradient(135deg, #e0f7fa, #ffffff, #b3e5fc);
-  --caixa: rgba(0, 0, 0, 0.05);
-  --borda: rgba(0, 0, 0, 0.1);
+  --fundo: radial-gradient(circle at top right, #f5ffff, #d4f1ff, #b3e5fc);
+  --caixa: rgba(255, 255, 255, 0.7);
+  --borda: rgba(0, 136, 255, 0.3);
   --botao: #0077ff;
-  --botao-hover: #00bfff;
+  --botao-hover: #00c8ff;
   --texto: #000000;
   --detalhe: #0077ff;
 }
 
-/* ====== CONTAINER ====== */
-.caixa-principal {
-  background: var(--caixa);
-  backdrop-filter: blur(8px);
-  border-radius: 20px;
-  padding: 40px;
-  width: 90%;
-  max-width: 600px;
-  text-align: center;
-  box-shadow: 0 0 20px var(--borda);
-  animation: aparecer 0.6s ease;
+/* ====== BRILHO E ANIMAÇÕES ====== */
+@keyframes brilhoPulse {
+  0% { box-shadow: 0 0 10px var(--detalhe), 0 0 20px var(--detalhe); }
+  50% { box-shadow: 0 0 25px var(--detalhe), 0 0 50px var(--detalhe); }
+  100% { box-shadow: 0 0 10px var(--detalhe), 0 0 20px var(--detalhe); }
 }
 
-@keyframes aparecer {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: var(--detalhe);
-}
-
-/* ====== PROGRESSO ====== */
-.caixa-progresso {
-  margin-bottom: 20px;
-  text-align: left;
-}
-
-.texto-progresso {
-  font-size: 0.9rem;
-  display: block;
-  margin-bottom: 8px;
-  color: var(--texto);
-}
-
-.barra-progresso {
-  background: var(--borda);
-  height: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.progresso {
-  background: linear-gradient(90deg, var(--botao), var(--botao-hover));
-  width: 0%;
-  height: 100%;
-  transition: width 0.4s ease;
-}
-
-/* ====== BOTÕES ====== */
-.botao-alternativa {
-  background-color: var(--botao);
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  padding: 12px 24px;
-  border-radius: 25px;
-  margin: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.botao-alternativa:hover {
-  background-color: var(--botao-hover);
-  transform: scale(1.05);
-}
-
-/* ====== RESULTADO ====== */
-.caixa-resultado {
-  display: none;
-  margin-top: 20px;
-}
-
-.texto-resultado {
-  font-size: 1.1rem;
-  margin-bottom: 20px;
-}
-
-/* ====== BOTÃO REINICIAR ====== */
-.botao-reiniciar {
-  background-color: transparent;
-  border: 2px solid var(--botao);
-  color: var(--botao);
-  padding: 10px 20px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.botao-reiniciar:hover {
-  background-color: var(--botao);
-  color: #fff;
-}
-
-/* ====== TRANSIÇÕES ====== */
-.fade-in {
-  animation: fadeIn 0.3s ease;
-}
-
-.fade-out {
-  animation: fadeOut 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-}
+/* ===*
