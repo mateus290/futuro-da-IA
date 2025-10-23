@@ -33,8 +33,6 @@ function atualizaProgresso() {
 
 function mostraPergunta() {
   caixaResultado.style.display = "none";
-
-  // Transição suave (fade)
   caixaPerguntas.classList.add("fade-out");
   caixaAlternativas.classList.add("fade-out");
 
@@ -88,5 +86,24 @@ botaoReiniciar.addEventListener("click", () => {
   barraProgresso.style.width = "0%";
   mostraPergunta();
 });
+
+/* ====== MODO CLARO/ESCURO AUTOMÁTICO ====== */
+function aplicaTemaAutomatico() {
+  const hora = new Date().getHours();
+  const body = document.body;
+
+  // Entre 6h e 18h → modo claro
+  if (hora >= 6 && hora < 18) {
+    body.classList.remove("modo-escuro");
+    body.classList.add("modo-claro");
+  } else {
+    body.classList.remove("modo-claro");
+    body.classList.add("modo-escuro");
+  }
+}
+
+// Aplica o tema inicial e atualiza automaticamente a cada hora
+aplicaTemaAutomatico();
+setInterval(aplicaTemaAutomatico, 60 * 60 * 1000);
 
 mostraPergunta();

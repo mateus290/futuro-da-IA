@@ -1,25 +1,47 @@
-/* ====== ESTILO BASE ====== */
+/* ====== CONFIGURAÇÃO BASE ====== */
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   font-family: "Poppins", sans-serif;
-  color: #fff;
   height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--texto);
+  background: var(--fundo);
+  transition: background 1s ease, color 0.5s ease;
+}
+
+/* ====== TEMAS ====== */
+body.modo-escuro {
+  --fundo: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --caixa: rgba(255, 255, 255, 0.1);
+  --borda: rgba(255, 255, 255, 0.2);
+  --botao: #00ffe7;
+  --botao-hover: #0099ff;
+  --texto: #ffffff;
+  --detalhe: #00ffe7;
+}
+
+body.modo-claro {
+  --fundo: linear-gradient(135deg, #e0f7fa, #ffffff, #b3e5fc);
+  --caixa: rgba(0, 0, 0, 0.05);
+  --borda: rgba(0, 0, 0, 0.1);
+  --botao: #0077ff;
+  --botao-hover: #00bfff;
+  --texto: #000000;
+  --detalhe: #0077ff;
 }
 
 /* ====== CONTAINER ====== */
 .caixa-principal {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--caixa);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   padding: 40px;
   width: 90%;
   max-width: 600px;
   text-align: center;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px var(--borda);
   animation: aparecer 0.6s ease;
 }
 
@@ -37,7 +59,7 @@ body {
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  color: #00ffe7;
+  color: var(--detalhe);
 }
 
 /* ====== PROGRESSO ====== */
@@ -50,18 +72,18 @@ h1 {
   font-size: 0.9rem;
   display: block;
   margin-bottom: 8px;
-  color: #b9e8ff;
+  color: var(--texto);
 }
 
 .barra-progresso {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--borda);
   height: 10px;
   border-radius: 10px;
   overflow: hidden;
 }
 
 .progresso {
-  background: linear-gradient(90deg, #00ffe7, #0099ff);
+  background: linear-gradient(90deg, var(--botao), var(--botao-hover));
   width: 0%;
   height: 100%;
   transition: width 0.4s ease;
@@ -69,9 +91,9 @@ h1 {
 
 /* ====== BOTÕES ====== */
 .botao-alternativa {
-  background-color: #00ffe7;
+  background-color: var(--botao);
   border: none;
-  color: #000;
+  color: #fff;
   font-size: 1rem;
   padding: 12px 24px;
   border-radius: 25px;
@@ -81,8 +103,7 @@ h1 {
 }
 
 .botao-alternativa:hover {
-  background-color: #0099ff;
-  color: #fff;
+  background-color: var(--botao-hover);
   transform: scale(1.05);
 }
 
@@ -100,8 +121,8 @@ h1 {
 /* ====== BOTÃO REINICIAR ====== */
 .botao-reiniciar {
   background-color: transparent;
-  border: 2px solid #00ffe7;
-  color: #00ffe7;
+  border: 2px solid var(--botao);
+  color: var(--botao);
   padding: 10px 20px;
   border-radius: 25px;
   cursor: pointer;
@@ -109,8 +130,8 @@ h1 {
 }
 
 .botao-reiniciar:hover {
-  background-color: #00ffe7;
-  color: #000;
+  background-color: var(--botao);
+  color: #fff;
 }
 
 /* ====== TRANSIÇÕES ====== */
@@ -119,4 +140,27 @@ h1 {
 }
 
 .fade-out {
-  animation: fadeOut 0.3s e
+  animation: fadeOut 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
